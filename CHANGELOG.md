@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.1](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.0...v0.3.1) (2025-11-28)
+
+### 🧹 Другое
+
+* **release-it-config:** добавлена проверка на наличие коммитов ([74f471c](https://github.com/cdek-it/react-native-ui-kit/commit/74f471cca880085f789ec948429d72f6e92713e0))
+
 ## [0.3.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.1...v0.3.0) (2025-11-28)
 
 ### 🚀 Новый функционал
