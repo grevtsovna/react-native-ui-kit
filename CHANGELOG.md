@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0 (2025-11-28)
+
+### 🧹 Другое
+
+* initial commit ([b1436a8](https://github.com/cdek-it/react-native-ui-kit/commit/b1436a8c99c70c63d25f800d316f1f8bf5fe8d82))
+* добавлен release-it ([e178b3b](https://github.com/cdek-it/react-native-ui-kit/commit/e178b3bafa0d3364d3fef7d1d4ca3f7a9a627bbb))
+* добавлен релизный workflow ([2234c1a](https://github.com/cdek-it/react-native-ui-kit/commit/2234c1af02ecfea5a8d68c7d290229a536ef6a7b))
+
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version)
 for commit guidelines.
