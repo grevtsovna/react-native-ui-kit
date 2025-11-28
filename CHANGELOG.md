@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.2.1...v0.3.0) (2025-11-28)
+
+### 🚀 Новый функционал
+
+* новая супер-фича ([1bb7c5b](https://github.com/cdek-it/react-native-ui-kit/commit/1bb7c5b509f9b0ae991e20330fd0e8a41483c95f))
+
 ## 0.2.1 (2025-11-28)
 
 ### 🧹 Другое
