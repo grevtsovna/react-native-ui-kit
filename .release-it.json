@@ -3,13 +3,20 @@
   "git": {
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
-    "requireCommits": true
+    "requireCommits": true,
+    "push": false
   },
   "github": { "release": true },
   "npm": { "publish": false },
   "hooks": {
-    "before:bump": "yarn expo prebuild --no-install",
-    "after:bump": "yarn build"
+    "after:bump": "yarn build",
+    "before:git:init": "echo before:git:init",
+    "after:git:init": "echo after:git:init",
+    "before:git:release": "echo before:git:release",
+    "after:git:release": "echo after:git:release",
+    "before:git:push": "echo before:git:push",
+    "after:git:push": "echo after:git:push",
+    "after:release": "yarn expo prebuild --no-install && git restore package.json && git add . && git commit --amend --no-edit && git push"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
