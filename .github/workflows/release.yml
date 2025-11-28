@@ -1,0 +1,46 @@
+on:
+  workflow_dispatch:
+    inputs:
+      noIncrement:
+        description: "Создать релиз без увеличения версии и публикации в npm"
+        required: false
+        default: false
+        type: boolean
+      bumpMode:
+        description: "Режим обновления версии. Auto - автоматически на основе списка изменений, Major - увеличение мажорной версии, Minor - увеличение минорной версии, Patch - выпуск патча"
+        required: false
+        default: Auto
+        type: choice
+        options:
+          - Auto
+          - Major
+          - Minor
+          - Patch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js with Dependencies
+        uses: ./.github/actions/setup-node
+
+      - name: Test
+        run: yarn test
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js with Dependencies
+        uses: ./.github/actions/setup-node
+
+      - name: Lint
+        run: yarn lint:check
+
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js with Dependencies
+        uses: ./.github/actions/setup-node
+
+      - name: Release Test Step
+        run: echo ${{ inputs.noIncrement }} - ${{ inputs.bumpMode }}
