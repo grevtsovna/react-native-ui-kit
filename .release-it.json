@@ -1,0 +1,31 @@
+{
+  "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
+  "git": { "commitMessage": "chore: release v${version}" },
+  "github": { "release": true },
+  "npm": { "publish": false },
+  "hooks": {
+    "before:bump": "yarn expo prebuild --no-install",
+    "after:bump": "yarn build"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          { "type": "feat", "section": "Новый функционал" },
+          { "type": "fix", "section": "Исправления багов" },
+          { "type": "chore", "section": "Другое" },
+          { "type": "docs", "section": "Другое" },
+          { "type": "style", "section": "Другое" },
+          { "type": "refactor", "section": "Рефакторинг" },
+          { "type": "perf", "section": "Другое" },
+          { "type": "test", "section": "Другое" },
+          { "type": "build", "section": "Другое" },
+          { "type": "ci", "section": "Другое", "hidden": false },
+          { "type": "revert", "section": "Другое" }
+        ]
+      },
+      "infile": "CHANGELOG.md"
+    }
+  }
+}
