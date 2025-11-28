@@ -1,6 +1,9 @@
 {
   "$schema": "https://unpkg.com/release-it@19/schema/release-it.json",
-  "git": { "commitMessage": "chore: release v${version}" },
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}"
+  },
   "github": { "release": true },
   "npm": { "publish": false },
   "hooks": {
@@ -12,17 +15,17 @@
       "preset": {
         "name": "conventionalcommits",
         "types": [
-          { "type": "feat", "section": "Новый функционал" },
-          { "type": "fix", "section": "Исправления багов" },
-          { "type": "chore", "section": "Другое" },
-          { "type": "docs", "section": "Другое" },
-          { "type": "style", "section": "Другое" },
-          { "type": "refactor", "section": "Рефакторинг" },
-          { "type": "perf", "section": "Другое" },
-          { "type": "test", "section": "Другое" },
-          { "type": "build", "section": "Другое" },
-          { "type": "ci", "section": "Другое", "hidden": false },
-          { "type": "revert", "section": "Другое" }
+          { "type": "feat", "section": "🚀 Новый функционал", "hidden": false },
+          { "type": "fix", "section": "🐛 Исправления багов", "hidden": false },
+          { "type": "chore", "section": "🧹 Другое", "hidden": false },
+          { "type": "docs", "section": "🧹 Другое", "hidden": false },
+          { "type": "style", "section": "🧹 Другое", "hidden": false },
+          { "type": "refactor", "section": "♻️ Рефакторинг", "hidden": false },
+          { "type": "perf", "section": "🧹 Другое", "hidden": false },
+          { "type": "test", "section": "🧹 Другое", "hidden": false },
+          { "type": "build", "section": "🧹 Другое", "hidden": false },
+          { "type": "ci", "section": "🧹 Другое", "hidden": false },
+          { "type": "revert", "section": "🧹 Другое", "hidden": false }
         ]
       },
       "infile": "CHANGELOG.md"
