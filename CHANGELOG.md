@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.2](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.1...v0.3.2) (2025-11-28)
+
+### 🧹 Другое
+
+* **release-it:** изменен конфиг ([adae225](https://github.com/cdek-it/react-native-ui-kit/commit/adae225209f8ced1ee43f7c7cbddf26abba12fc0))
+
 ## [0.3.1](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.0...v0.3.1) (2025-11-28)
 
 ### 🧹 Другое
