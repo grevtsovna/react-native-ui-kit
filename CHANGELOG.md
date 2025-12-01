@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.3.5](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.4...v0.3.5) (2025-12-01)
+
 ## [0.3.4](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.2...v0.3.4) (2025-12-01)
 
 ## [0.3.3](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.2...v0.3.3) (2025-12-01)
