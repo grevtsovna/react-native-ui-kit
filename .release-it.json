@@ -3,8 +3,7 @@
   "git": {
     "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
-    "requireCommits": true,
-    "push": false
+    "requireCommits": true
   },
   "github": { "release": true },
   "npm": { "publish": false },
@@ -12,11 +11,10 @@
     "after:bump": "yarn build",
     "before:git:init": "echo before:git:init",
     "after:git:init": "echo after:git:init",
-    "before:git:release": "echo before:git:release",
+    "before:git:release": "yarn expo prebuild --no-install && git restore package.json && git add .",
     "after:git:release": "echo after:git:release",
     "before:git:push": "echo before:git:push",
-    "after:git:push": "echo after:git:push",
-    "after:release": "yarn expo prebuild --no-install && git restore package.json && git add . && git commit --amend --no-edit && git push"
+    "after:git:push": "echo after:git:push"
   },
   "plugins": {
     "@release-it/conventional-changelog": {
@@ -25,14 +23,14 @@
         "types": [
           { "type": "feat", "section": "🚀 Новый функционал", "hidden": false },
           { "type": "fix", "section": "🐛 Исправления багов", "hidden": false },
-          { "type": "chore", "section": "🧹 Другое", "hidden": false },
+          { "type": "chore", "section": "🧹 Другое", "hidden": true },
           { "type": "docs", "section": "🧹 Другое", "hidden": false },
           { "type": "style", "section": "🧹 Другое", "hidden": false },
           { "type": "refactor", "section": "♻️ Рефакторинг", "hidden": false },
           { "type": "perf", "section": "🧹 Другое", "hidden": false },
-          { "type": "test", "section": "🧹 Другое", "hidden": false },
-          { "type": "build", "section": "🧹 Другое", "hidden": false },
-          { "type": "ci", "section": "🧹 Другое", "hidden": false },
+          { "type": "test", "section": "🧹 Другое", "hidden": true },
+          { "type": "build", "section": "🧹 Другое", "hidden": true },
+          { "type": "ci", "section": "🧹 Другое", "hidden": true },
           { "type": "revert", "section": "🧹 Другое", "hidden": false }
         ]
       },
