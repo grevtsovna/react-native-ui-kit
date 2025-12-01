@@ -14,7 +14,7 @@ import {
 export const makeStyles =
   <T extends StylesObject>(createStyles: CreateStyles<T>): (() => T) =>
   () => {
-    const fonts = useFonts()
+    const fonts = useFonts();
     const theme = useTheme()
     const themeValues = useMemo(() => {
       switch (theme) {
