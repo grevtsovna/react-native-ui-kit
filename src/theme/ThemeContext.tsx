@@ -43,7 +43,7 @@ export const ThemeContextProvider = ({
   const contextValue = useMemo(
     () => ({ theme, fonts, changeTheme }),
     [theme, fonts, changeTheme]
-  )
+  );
 
   return (
     <ThemeContext.Provider value={contextValue}>
