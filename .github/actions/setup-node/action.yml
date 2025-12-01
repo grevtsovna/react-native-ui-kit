@@ -1,9 +1,19 @@
 name: 'Setup Node.js with Dependencies'
 description: 'Checkout repo, setup Node.js, cache and install dependencies'
+inputs:
+  fetch-depth:
+    description:
+      'Number of commits to fetch. 0 indicates all history for all branches and
+      tags. Default: 1'
+    default: 1
 
 runs:
   using: 'composite'
   steps:
+    - uses: actions/checkout@v6
+      with:
+        fetch-depth: ${{ inputs.fetch-depth }}
+
     - name: Setup Node.js
       uses: actions/setup-node@v6
 

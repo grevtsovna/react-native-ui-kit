@@ -1,0 +1,17 @@
+name: Typecheck
+
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/setup-node
+
+      - name: Run Typecheck
+        run: yarn tsc --noEmit
