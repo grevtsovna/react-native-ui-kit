@@ -1,7 +1,12 @@
 name: Typecheck
 
 on:
+  push:
+    branches: [main]
   pull_request:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
@@ -12,7 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-node
-
-      - name: Run Typecheck
-        run: yarn tsc --noEmit
+      - uses: ./.github/actions/typecheck

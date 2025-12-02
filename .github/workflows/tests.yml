@@ -1,8 +1,13 @@
 name: Tests
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
@@ -13,7 +18,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-node
-
-      - name: Run Tests
-        run: yarn test --ci
+      - uses: ./.github/actions/tests

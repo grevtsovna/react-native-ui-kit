@@ -1,4 +1,4 @@
-name: Lint
+name: Commit Lint
 
 on:
   push:
@@ -13,8 +13,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
+  commitlint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/lint
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-node
+      - uses: ./.github/actions/commitlint

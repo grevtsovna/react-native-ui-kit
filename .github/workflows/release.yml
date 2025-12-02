@@ -17,29 +17,53 @@ on:
           - major
           - minor
           - patch
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  test:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: ./.github/actions/setup-node
 
-      - name: Test
-        run: yarn test
+  test:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/tests
 
   lint:
     runs-on: ubuntu-latest
+    needs: install
     steps:
       - uses: actions/checkout@v6
-      - uses: ./.github/actions/setup-node
+      - uses: ./.github/actions/lint
 
-      - name: Lint
-        run: yarn lint:check
+  typecheck:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/typecheck
+
+  commitlint:
+    runs-on: ubuntu-latest
+    needs: install
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/commitlint
 
   release:
     runs-on: ubuntu-latest
-    needs: [test, lint]
+    needs: [test, lint, typecheck, commitlint]
+    permissions:
+      contents: write
+      id-token: write # REQUIRED FOR OIDC
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
