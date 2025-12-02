@@ -150,4 +150,4 @@ Storybook проект создан с помощью Expo
 
 [https://developer.cdek.ru/design-system](https://developer.cdek.ru/design-system)
 
-test
+test test2
