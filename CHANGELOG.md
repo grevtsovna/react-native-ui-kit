@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.4...v0.4.0) (2025-12-02)
+
+### 🚀 Новый функционал
+
+* **readme:** test2 ([13252e0](https://github.com/cdek-it/react-native-ui-kit/commit/13252e0732ffd4c6fe04f81e096375085a4fcc6b))
+
 ## [0.3.4](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.2...v0.3.4) (2025-12-01)
 
 ## [0.3.3](https://github.com/cdek-it/react-native-ui-kit/compare/v0.3.2...v0.3.3) (2025-12-01)
