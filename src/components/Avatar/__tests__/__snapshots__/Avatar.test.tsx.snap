@@ -19,7 +19,7 @@ exports[`Avatar component tests Size: custom, shape: circle, type: icon, with cu
         },
         {
           "height": 102,
-          "width": 102,
+          "width": 101,
         },
         {
           "backgroundColor": "#44e858",
