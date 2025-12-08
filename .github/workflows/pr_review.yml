@@ -1,0 +1,50 @@
+name: PR Notifications
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, edited, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft != true
+    steps:
+      - shell: bash
+        run: |
+          BRANCH_URL="${{ github.event.pull_request.head.repo.html_url }}/tree/${{ github.event.pull_request.head.ref }}"
+
+          MM_USERS_JSON='${{ secrets.MM_USERS }}'
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}"
+          PR_AUTHOR_MM=$(echo "$MM_USERS_JSON" | jq -r --arg author "$PR_AUTHOR" '.[$author]')
+
+          readarray -t USERS_ARRAY < <(echo "$MM_USERS_JSON" | jq -r --arg exclude "$PR_AUTHOR_MM" '.[] | select(. != $exclude and . != null and . != "")')
+
+          if [ ${#USERS_ARRAY[@]} -gt 0 ]; then
+            RANDOM_REVIEWER=${USERS_ARRAY[$RANDOM % ${#USERS_ARRAY[@]}]}
+          else
+            RANDOM_REVIEWER="${{ secrets.DEFAULT_REVIEWER }}"
+          fi
+
+          echo "::add-mask::$PR_AUTHOR_MM"
+          echo "::add-mask::$USERS_ARRAY"
+          echo "::add-mask::$MM_USERS_JSON"
+          echo "::add-mask::$RANDOM_REVIEWER"
+
+          MESSAGE="MR [!${{ github.event.pull_request.number }}](${{ github.event.pull_request.html_url }})"
+          MESSAGE+=" от [${{ github.event.pull_request.user.login }} ${USER_NAME}]"
+          MESSAGE+="(${{ github.event.pull_request.user.html_url }})"
+          MESSAGE+="(ветка: [${{ github.event.pull_request.head.ref }}](${BRANCH_URL})) готов на ревью.\n"
+          MESSAGE+="Выбран ревьюер: ${RANDOM_REVIEWER}."
+
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"text\": \"$MESSAGE\"}" \
+            "${{ secrets.BUILD_CHAT_WEBHOOK }}"
