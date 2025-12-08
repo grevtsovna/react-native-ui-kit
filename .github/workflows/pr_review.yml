@@ -17,10 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft != true
     steps:
+      - run: echo "${{ toJson(github) }}"
       - shell: bash
         run: |
           USER_NAME=""
-          if [ -n "${{ github.event.pull_request.user.name }}" ]; then
+          if [ -n "${{ github.event.pull_request.user }}" ]; then
             USER_NAME=" (${{ github.event.pull_request.user.name }})"
           fi
 
