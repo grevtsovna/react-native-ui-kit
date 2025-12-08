@@ -42,7 +42,7 @@ jobs:
           MESSAGE+=" от [${{ github.event.pull_request.user.login }} ${USER_NAME}]"
           MESSAGE+="(${{ github.event.pull_request.user.html_url }})"
           MESSAGE+="(ветка: [${{ github.event.pull_request.head.ref }}](${BRANCH_URL})) готов на ревью.\n"
-          MESSAGE+="Выбран ревьюер: ${RANDOM_REVIEWER}."
+          MESSAGE+="Выбран ревьюер: @${RANDOM_REVIEWER}."
 
           curl -X POST \
             -H "Content-Type: application/json" \
